@@ -20,45 +20,43 @@
 </template>
 
 <script>
-  export default {
-    created() {
-      console.log(this.$route.redirectedFrom)
-    },
-    data() {
-      return {
-        data: {
-          username: '',
-          password: '',
-          token: ''
-        },
-        isLoading: false,
-        rules: {
-          username: [
-            {required: true, message: '请输入账号', trigger: 'blur'}
-          ],
-          password: [
-            {required: true, message: '请输入密码', trigger: 'blur'}
-          ]
-        }
-      }
-    },
-    methods: {
-      handleSubmit() {
-        this.$refs.loginForm.validate((valid) => {
-          if (!valid) {
-            return
-          }
-
-          this.login()
-        })
+export default {
+  created () {
+    console.log(this.$route.redirectedFrom)
+  },
+  data () {
+    return {
+      data: {
+        username: '',
+        password: '',
+        token: ''
       },
-      login() {
-        const data = JSON.parse(JSON.stringify(this.data))
-
-        this.isLoading = true
+      isLoading: false,
+      rules: {
+        username: [
+          {required: true, message: '请输入账号', trigger: 'blur'}
+        ],
+        password: [
+          {required: true, message: '请输入密码', trigger: 'blur'}
+        ]
       }
     }
+  },
+  methods: {
+    handleSubmit () {
+      this.$refs.loginForm.validate((valid) => {
+        if (!valid) {
+          return
+        }
+
+        this.login()
+      })
+    },
+    login () {
+      this.isLoading = true
+    }
   }
+}
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>

@@ -1,7 +1,8 @@
-export function getAuthority() {
-  return localStorage.getItem('token')
-}
-
-export function loggedIn() {
-  return typeof getAuthority() !== 'undefined'
+export default {
+  getAuthority () {
+    return localStorage.getItem('token')
+  },
+  hasLoggedIn () {
+    return !!this.getAuthority()
+  }
 }
