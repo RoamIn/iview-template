@@ -1,6 +1,6 @@
 export default {
-  getUserList: {
-    type: 'GET',
-    name: '/api/user/getUserList'
-  }
+    getUserList: {
+        type: 'GET',
+        name: '/api/user/getUserList'
+    }
 }

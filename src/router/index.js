@@ -16,49 +16,48 @@ import echart from './echart'
 Vue.use(Router)
 
 const router = new Router({
-  routes: [
-    {
-      path: '/',
-      name: '',
-      component: () => import('@/views/app'),
-      children: [
+    routes: [
         {
-          path: '/',
-          redirect: {name: 'dashboard'}
+            path: '/',
+            component: () => import('@/views/app'),
+            children: [
+                {
+                    path: '',
+                    redirect: {name: 'hello'}
+                },
+                dashboard,
+                echart,
+                user
+            ]
         },
-        dashboard,
-        echart,
-        user
-      ]
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: () => import('@/views/login')
-    },
-    {
-      path: '*',
-      name: '404',
-      component: () => import('@/views/404')
-    },
-  ]
+        {
+            path: '/login',
+            name: 'login',
+            component: () => import('@/views/login')
+        },
+        {
+            path: '*',
+            name: '404',
+            component: () => import('@/views/404')
+        }
+    ]
 })
 
 // Navigation Guards
 router.beforeEach((to, from, next) => {
-  if (authority.hasLoggedIn() && to.path === '/login') {
-    next({path: '/'})
-  } else if (!authority.hasLoggedIn() && to.path !== '/login') {
-    // sessionStorage.setItem('redirect', to.path);
-    next({
-      path: '/login',
-      query: {
-        redirect: to.fullPath
-      }
-    })
-  } else {
-    next()
-  }
+    if (authority.hasLoggedIn() && to.path === '/login') {
+        next({path: '/'})
+    } else if (!authority.hasLoggedIn() && to.path !== '/login') {
+        // sessionStorage.setItem('redirect', to.path);
+        next({
+            path: '/login',
+            query: {
+                redirect: to.fullPath
+            }
+        })
+    } else {
+        next()
+    }
 })
 
 export default router
