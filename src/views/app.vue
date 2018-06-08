@@ -36,32 +36,32 @@
 </template>
 
 <script>
-    export default {
-        data () {
-            return {
-                isCollapsed: false
-            }
+export default {
+    data () {
+        return {
+            isCollapsed: false
+        }
+    },
+    computed: {
+        rotateIcon () {
+            return [
+                'menu-icon',
+                this.isCollapsed ? 'rotate-icon' : ''
+            ]
         },
-        computed: {
-            rotateIcon () {
-                return [
-                    'menu-icon',
-                    this.isCollapsed ? 'rotate-icon' : ''
-                ]
-            },
-            menuitemClasses () {
-                return [
-                    'menu-item',
-                    this.isCollapsed ? 'collapsed-menu' : ''
-                ]
-            }
-        },
-        methods: {
-            collapsedSider () {
-                this.$refs.side1.toggleCollapse()
-            }
+        menuitemClasses () {
+            return [
+                'menu-item',
+                this.isCollapsed ? 'collapsed-menu' : ''
+            ]
+        }
+    },
+    methods: {
+        collapsedSider () {
+            this.$refs.side1.toggleCollapse()
         }
     }
+}
 </script>
 
 <style lang="scss" scoped>

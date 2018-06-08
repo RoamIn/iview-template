@@ -27,54 +27,54 @@
 </template>
 
 <script>
-    import authority from '@/utils/authority'
+import authority from '@/utils/authority'
 
-    export default {
-        created () {
-            console.log(this.$route.redirectedFrom)
-        },
-        data () {
-            return {
-                form: {
-                    data: {
-                        username: '',
-                        password: '',
-                        token: ''
-                    },
-                    rules: {
-                        username: [
-                            {required: true, message: '请输入账号', trigger: 'blur'}
-                        ],
-                        password: [
-                            {required: true, message: '请输入密码', trigger: 'blur'}
-                        ]
-                    },
-                    isLoading: false
-                }
-            }
-        },
-        methods: {
-            handleSubmit () {
-                this.$refs.form.validate((valid) => {
-                    if (!valid) {
-                        return
-                    }
-
-                    this.login()
-                })
-            },
-            login () {
-                const data = JSON.parse(JSON.stringify(this.form.data))
-
-                this.form.isLoading = true
-
-                authority.login(data).then(() => {
-                    this.$router.replace(this.$route.query.redirect || '/')
-                    this.form.isLoading = false
-                })
+export default {
+    created () {
+        console.log(this.$route.redirectedFrom)
+    },
+    data () {
+        return {
+            form: {
+                data: {
+                    username: '',
+                    password: '',
+                    token: ''
+                },
+                rules: {
+                    username: [
+                        {required: true, message: '请输入账号', trigger: 'blur'}
+                    ],
+                    password: [
+                        {required: true, message: '请输入密码', trigger: 'blur'}
+                    ]
+                },
+                isLoading: false
             }
         }
+    },
+    methods: {
+        handleSubmit () {
+            this.$refs.form.validate((valid) => {
+                if (!valid) {
+                    return
+                }
+
+                this.login()
+            })
+        },
+        login () {
+            const data = JSON.parse(JSON.stringify(this.form.data))
+
+            this.form.isLoading = true
+
+            authority.login(data).then(() => {
+                this.$router.replace(this.$route.query.redirect || '/')
+                this.form.isLoading = false
+            })
+        }
     }
+}
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
