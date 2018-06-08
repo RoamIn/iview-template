@@ -2,17 +2,22 @@ export default {
     path: '/echart',
     component: {template: '<router-view></router-view>'},
     meta: {
-        name: '图表',
-        icon: 'menu'
+        name: 'Echart'
     },
     children: [
         {
             path: '',
-            redirect: {name: 'gl'}
+            redirect: {name: 'gl'},
+            meta: {
+                hidden: true
+            }
         },
         {
             path: 'gl',
             name: 'gl',
+            meta: {
+                name: 'Echart GL'
+            },
             component: () => import('@/views/echart/gl')
         }
     ]

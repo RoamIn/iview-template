@@ -19,11 +19,17 @@ const router = new Router({
     routes: [
         {
             path: '/',
-            component: () => import('@/views/app'),
+            meta: {
+                hidden: true
+            },
+            component: () => import('@/views/app/index'),
             children: [
                 {
                     path: '',
-                    redirect: {name: 'hello'}
+                    redirect: {name: 'hello'},
+                    meta: {
+                        hidden: true
+                    }
                 },
                 dashboard,
                 echart,
@@ -33,11 +39,17 @@ const router = new Router({
         {
             path: '/login',
             name: 'login',
+            meta: {
+                hidden: true
+            },
             component: () => import('@/views/login')
         },
         {
             path: '*',
             name: '404',
+            meta: {
+                hidden: true
+            },
             component: () => import('@/views/404')
         }
     ]

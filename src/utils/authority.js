@@ -17,5 +17,8 @@ export default {
                 resolve()
             })
         })
+    },
+    logout () {
+        cookie.remove('token')
     }
 }
