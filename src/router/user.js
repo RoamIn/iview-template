@@ -16,7 +16,8 @@ export default {
             path: 'list',
             name: 'userList',
             meta: {
-                name: '用户列表'
+                name: '用户列表',
+                icon: 'ios-people'
             },
             component: () => import('@/views/user/list')
         }

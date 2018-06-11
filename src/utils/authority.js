@@ -7,15 +7,9 @@ export default {
     hasLoggedIn () {
         return typeof this.getAuthority() !== 'undefined'
     },
-    login (data) {
-        return new Promise((resolve) => {
-            setTimeout((token = 'token', expire = 18000) => {
-                cookie.set('token', token, {
-                    expire
-                })
-
-                resolve()
-            })
+    set ({token, expire}) {
+        cookie.set('token', token, {
+            expire
         })
     },
     logout () {

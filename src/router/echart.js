@@ -2,7 +2,8 @@ export default {
     path: '/echart',
     component: {template: '<router-view></router-view>'},
     meta: {
-        name: 'Echart'
+        name: 'Echart',
+        icon: 'stats-bars'
     },
     children: [
         {

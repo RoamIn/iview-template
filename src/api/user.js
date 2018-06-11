@@ -1,6 +1,6 @@
 export default {
-    getUserList: {
-        type: 'GET',
-        name: '/api/user/getUserList'
+    searchUserList: {
+        method: 'POST',
+        url: '/core/CoreUserController/searchUserList'
     }
 }

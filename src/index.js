@@ -5,8 +5,10 @@ import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 
 import router from './router'
+import ajax from '@/utils/ajax'
 
 Vue.use(iView)
+Vue.use(ajax)
 
 Vue.config.productionTip = false
 

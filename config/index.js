@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+
+    // proxy
+    proxy: false, // false: local mock; true: use proxy
+    proxyTable: {
+      '/index.php': {
+        target: 'https://some.domain.com',
+        changeOrigin: true
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

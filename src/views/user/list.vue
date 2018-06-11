@@ -1,5 +1,18 @@
 <template>
     <div>
+        <Form ref="searchForm" class="pull-right" inline>
+            <FormItem>
+                <Input placeholder="Name"
+                       v-model="params.name"></Input>
+            </FormItem>
+
+            <FormItem>
+                <Button class="m-l-xs" html-type="submit" type="primary" icon="search"
+                        @click="search()">搜索
+                </Button>
+            </FormItem>
+        </Form>
+
         <Table :columns="table.columns"
                :data="table.data"></Table>
 
@@ -9,50 +22,42 @@
 
 <script>
 export default {
+    created () {
+        this.fetchData()
+    },
     data () {
         return {
+            params: {
+                name: ''
+            },
             table: {
                 columns: [
                     {
+                        title: '#',
+                        key: 'core_user_id'
+                    },
+                    {
                         title: 'Name',
-                        key: 'name'
+                        key: 'core_user_name'
                     },
                     {
-                        title: 'Age',
-                        key: 'age'
+                        title: 'UserName',
+                        key: 'display_name'
                     },
                     {
-                        title: 'Address',
-                        key: 'address'
+                        title: 'Email',
+                        key: 'email'
                     }
                 ],
-                data: [
-                    {
-                        name: 'John Brown',
-                        age: 18,
-                        address: 'New York No. 1 Lake Park',
-                        date: '2016-10-03'
-                    },
-                    {
-                        name: 'Jim Green',
-                        age: 24,
-                        address: 'London No. 1 Lake Park',
-                        date: '2016-10-01'
-                    },
-                    {
-                        name: 'Joe Black',
-                        age: 30,
-                        address: 'Sydney No. 1 Lake Park',
-                        date: '2016-10-02'
-                    },
-                    {
-                        name: 'Jon Snow',
-                        age: 26,
-                        address: 'Ottawa No. 2 Lake Park',
-                        date: '2016-10-04'
-                    }
-                ]
+                data: []
             }
+        }
+    },
+    methods: {
+        fetchData (data) {
+            this.$ajax('searchUserList').then((res) => {
+                this.table.data = res.data.user_list
+            })
         }
     }
 }

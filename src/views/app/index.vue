@@ -26,23 +26,23 @@
                         </Poptip>
                     </span>
 
-                        <Dropdown trigger="click">
+                    <Dropdown trigger="click">
                             <span class="item user">
                                 <span class="avatar"></span>
                                 <span class="user-name">Vinci</span>
                             </span>
 
-                            <DropdownMenu slot="list">
-                                <DropdownItem>
-                                    <Icon type="ios-person-outline"></Icon>&emsp;个人信息
-                                </DropdownItem>
-                                <DropdownItem divided>
-                                    <a href="javascript:void(0)" @click="logout">
-                                        <Icon type="log-out"></Icon>&emsp;退出
-                                    </a>
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
+                        <DropdownMenu slot="list">
+                            <DropdownItem>
+                                <Icon type="ios-person-outline"></Icon>&emsp;个人信息
+                            </DropdownItem>
+                            <DropdownItem divided>
+                                <a href="javascript:void(0)" @click="logout">
+                                    <Icon type="log-out"></Icon>&emsp;退出
+                                </a>
+                            </DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
                 </div>
             </header>
 
@@ -70,9 +70,7 @@ export default {
             isCollapsed: false
         }
     },
-    computed: {
-
-    },
+    computed: {},
     methods: {
         toggleCollapse () {
             this.isCollapsed = ~this.isCollapsed
@@ -112,6 +110,7 @@ export default {
     }
 
     main {
+        overflow-x: hidden;
         display: flex;
         min-height: 100vh;
         flex: auto;

@@ -1,4 +1,5 @@
 'use strict'
+const fs = require('fs')
 const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -98,4 +99,24 @@ exports.createNotifierCallback = () => {
       icon: path.join(__dirname, 'logo.png')
     })
   }
+}
+
+// mocker
+exports.mocker = function (app) {
+  const PAGE_PATH = path.resolve(__dirname, '../mock/')
+  const apiFileList = fs.readdirSync(PAGE_PATH)
+
+  apiFileList.forEach((file) => {
+    const apiConf = require(path.join(PAGE_PATH, file))
+
+    Object.keys(apiConf).forEach(url => {
+      const api = apiConf[url]
+      const method = api.method.toLowerCase()
+
+      // register router
+      app[method](url, (req, res) => {
+        res.json(api.res())
+      })
+    })
+  })
 }

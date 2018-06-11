@@ -1,6 +1,6 @@
 export default {
     login: {
-        type: 'POST',
-        name: '/api/login'
+        method: 'POST',
+        url: '/public/lebbay/login'
     }
 }

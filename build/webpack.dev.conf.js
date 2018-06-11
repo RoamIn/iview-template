@@ -38,11 +38,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       ? { warnings: false, errors: true }
       : false,
     publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
+    proxy: config.dev.proxy ? config.dev.proxyTable : {},
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
-    }
+    },
+    before: config.dev.proxy ? () => {} : utils.mocker
   },
   plugins: [
     new webpack.DefinePlugin({

@@ -57,12 +57,12 @@ const router = new Router({
 
 // Navigation Guards
 router.beforeEach((to, from, next) => {
-    if (authority.hasLoggedIn() && to.path === '/login') {
+    if (authority.hasLoggedIn() && to.name === 'login') {
         next({path: '/'})
-    } else if (!authority.hasLoggedIn() && to.path !== '/login') {
+    } else if (!authority.hasLoggedIn() && to.name !== 'login') {
         // sessionStorage.setItem('redirect', to.path);
         next({
-            path: '/login',
+            name: 'login',
             query: {
                 redirect: to.fullPath
             }

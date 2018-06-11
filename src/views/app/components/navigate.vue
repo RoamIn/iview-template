@@ -1,12 +1,18 @@
 <template>
     <li class="menu-item" v-if="visible">
         <template v-if="hasChildren">
-            <div class="menu-title">{{ route.meta.name }}</div>
+            <div class="menu-title">
+                <Icon :type="route.meta.icon" v-if="route.meta.icon"></Icon>
+                {{ route.meta.name }}
+            </div>
         </template>
         <template v-else>
             <router-link class="router"
                          :class="{active: $route.name === route.name}"
-                         :to="{name: route.name}">{{ route.meta.name }}</router-link>
+                         :to="{name: route.name}">
+                <Icon :type="route.meta.icon" v-if="route.meta.icon"></Icon>
+                {{ route.meta.name }}
+            </router-link>
         </template>
         <ul class="submenu" v-if="hasChildren">
             <navigate
@@ -39,15 +45,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import "~scss/_mixins";
+
     li {
         list-style: none;
+
+        i {
+            font-size: 16px;
+        }
     }
 
     .menu-item {
         font-size: 14px;
         line-height: 40px;
 
-        &>.submenu {
+        & > .submenu {
             padding-left: 5%;
         }
     }
@@ -64,6 +76,8 @@ export default {
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         color: #fff;
+
+        @include text-truncate();
 
         &:hover,
         &.active {

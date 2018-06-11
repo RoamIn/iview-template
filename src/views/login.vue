@@ -30,9 +30,6 @@
 import authority from '@/utils/authority'
 
 export default {
-    created () {
-        console.log(this.$route.redirectedFrom)
-    },
     data () {
         return {
             form: {
@@ -68,9 +65,14 @@ export default {
 
             this.form.isLoading = true
 
-            authority.login(data).then(() => {
-                this.$router.replace(this.$route.query.redirect || '/')
+            this.$ajax('login', data).then((res) => {
+                authority.set(res.data)
+
                 this.form.isLoading = false
+                this.$router.replace(this.$route.query.redirect || '/')
+            }).catch((error) => {
+                this.form.isLoading = false
+                console.log(error)
             })
         }
     }
