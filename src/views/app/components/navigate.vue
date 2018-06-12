@@ -3,7 +3,7 @@
         <template v-if="hasChildren">
             <div class="menu-title">
                 <Icon :type="route.meta.icon" v-if="route.meta.icon"></Icon>
-                {{ route.meta.name }}
+                {{ route.meta.title }}
             </div>
         </template>
         <template v-else>
@@ -11,7 +11,7 @@
                          :class="{active: $route.name === route.name}"
                          :to="{name: route.name}">
                 <Icon :type="route.meta.icon" v-if="route.meta.icon"></Icon>
-                {{ route.meta.name }}
+                {{ route.meta.title }}
             </router-link>
         </template>
         <ul class="submenu" v-if="hasChildren">

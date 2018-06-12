@@ -20,6 +20,7 @@ const router = new Router({
         {
             path: '/',
             meta: {
+                title: '首页',
                 hidden: true
             },
             component: () => import('@/views/app/index'),
@@ -40,6 +41,7 @@ const router = new Router({
             path: '/login',
             name: 'login',
             meta: {
+                title: '登录',
                 hidden: true
             },
             component: () => import('@/views/login')
@@ -48,6 +50,7 @@ const router = new Router({
             path: '*',
             name: '404',
             meta: {
+                title: '404',
                 hidden: true
             },
             component: () => import('@/views/404')

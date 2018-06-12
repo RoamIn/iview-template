@@ -2,7 +2,7 @@ export default {
     path: '/echart',
     component: {template: '<router-view></router-view>'},
     meta: {
-        name: 'Echart',
+        title: 'Echart',
         icon: 'stats-bars'
     },
     children: [
@@ -17,7 +17,7 @@ export default {
             path: 'gl',
             name: 'gl',
             meta: {
-                name: 'Echart GL'
+                title: 'Echart GL'
             },
             component: () => import('@/views/echart/gl')
         }

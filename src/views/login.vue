@@ -72,7 +72,7 @@ export default {
                 this.$router.replace(this.$route.query.redirect || '/')
             }).catch((error) => {
                 this.form.isLoading = false
-                console.log(error)
+                this.$Message.error(error.message)
             })
         }
     }

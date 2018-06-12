@@ -47,6 +47,7 @@
             </header>
 
             <div class="content">
+                <breadcrumb-nav></breadcrumb-nav>
                 <router-view></router-view>
             </div>
 
@@ -59,11 +60,14 @@
 
 <script>
 import authority from '@/utils/authority'
+
+import BreadcrumbNav from './breadcrumb-nav'
 import Navigation from './navigation'
 
 export default {
     components: {
-        Navigation
+        Navigation,
+        BreadcrumbNav
     },
     data () {
         return {

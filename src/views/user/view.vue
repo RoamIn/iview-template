@@ -42,23 +42,19 @@ export default {
                 columns: [
                     {
                         title: '#',
-                        key: 'id'
+                        key: 'core_user_id'
                     },
                     {
-                        title: 'Username',
-                        key: 'username'
+                        title: 'Name',
+                        key: 'core_user_name'
                     },
                     {
-                        title: 'Nickname',
-                        key: 'nickname'
+                        title: 'UserName',
+                        key: 'display_name'
                     },
                     {
                         title: 'Email',
                         key: 'email'
-                    },
-                    {
-                        title: 'Mobile',
-                        key: 'mobile'
                     },
                     {
                         title: 'Action',
@@ -113,25 +109,15 @@ export default {
             this.page.current = page
 
             this.$ajax('searchUserList', data).then((res) => {
-                this.table.data = res.data.list
+                this.table.data = res.data.user_list
                 this.page.total = parseInt(res.data.totalCount)
             })
         },
-        view ({id}) {
-            this.$router.push({
-                name: 'viewUser',
-                params: {
-                    id: id
-                }
-            })
+        view (item) {
+            console.log(JSON.stringify(item, null, 4))
         },
-        edit ({id}) {
-            this.$router.push({
-                name: 'editUser',
-                params: {
-                    id: id
-                }
-            })
+        edit (item) {
+            console.log(JSON.stringify(item, null, 4))
         }
     }
 }
