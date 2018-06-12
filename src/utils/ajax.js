@@ -65,6 +65,7 @@ ajax.interceptors.response.use((response) => {
     switch (error.response.status) {
         case 403:
             Message.error('无权限')
+            authority.logout()
             router.go({
                 name: 'login',
                 query: {
