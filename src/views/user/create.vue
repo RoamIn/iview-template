@@ -5,11 +5,6 @@
               :rules="form.rules"
               :label-width="120">
 
-            <FormItem label="id">
-                <Input class="form-ele" disabled
-                       v-model="form.data.id"></Input>
-            </FormItem>
-
             <FormItem label="Username" prop="username">
                 <Input class="form-ele" placeholder="20个字以内" :maxlength="20"
                        v-model="form.data.username"></Input>
@@ -60,10 +55,6 @@ export default {
     components: {
         FormLayout
     },
-    created () {
-        this.form.data.id = this.$route.params.id
-        this.getInfo(this.form.data.id)
-    },
     data () {
         return {
             form: {
@@ -84,14 +75,6 @@ export default {
         }
     },
     methods: {
-        getInfo (id) {
-            this.$ajax('getUserInfo', {id}).then((res) => {
-                Object.assign(this.form.data, res.data)
-            }).catch((error) => {
-                this.form.hasError = true
-                this.form.message = error.message
-            })
-        },
         handleSubmit () {
             this.$refs.form.validate((valid) => {
                 if (!valid) {
@@ -124,11 +107,6 @@ export default {
         back () {
             this.$router.push({name: 'userList'})
         }
-    },
-    beforeRouteLeave (to, from, next) {
-        // 设置下一个路由的 meta
-        to.meta.keepAlive = false // 不缓存，即刷新
-        next()
     }
 }
 </script>

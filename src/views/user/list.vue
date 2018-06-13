@@ -12,6 +12,12 @@
             </FormItem>
         </Form>
 
+       <div slot="handle">
+           <Button class="m-l-xs" html-type="submit" type="primary" icon="plus"
+                   @click="create()">创建
+           </Button>
+       </div>
+
         <Table slot="table" :columns="table.columns"
                :data="table.data"></Table>
 
@@ -24,7 +30,7 @@
 </template>
 
 <script>
-import ListLayout from '@/components/list-layout'
+import ListLayout from '@/components/layout/list'
 
 export default {
     components: {
@@ -41,6 +47,7 @@ export default {
             table: {
                 columns: [
                     {
+                        width: 100,
                         title: '#',
                         key: 'id'
                     },
@@ -123,6 +130,11 @@ export default {
                 params: {
                     id: id
                 }
+            })
+        },
+        create () {
+            this.$router.push({
+                name: 'createUser'
             })
         },
         edit ({id}) {

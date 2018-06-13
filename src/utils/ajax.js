@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Message, LoadingBar } from 'iview'
+import {Message, LoadingBar} from 'iview'
 
 import API from '@/api'
 import router from '@/router'
@@ -74,8 +74,7 @@ ajax.interceptors.request.use((config) => {
     }
 
     return config
-},
-(error) => {
+}, (error) => {
     Message.error(error.message)
     // Do something with request error
     return Promise.reject(error)
@@ -95,8 +94,7 @@ ajax.interceptors.response.use((response) => {
     }
 
     return res
-},
-(error) => {
+}, (error) => {
     // Do something with response error
     if (typeof error.response === 'undefined') {
         Message.error(error.message)

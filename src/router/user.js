@@ -17,9 +17,19 @@ export default {
             name: 'userList',
             meta: {
                 title: '用户列表',
-                icon: 'ios-people'
+                icon: 'ios-people',
+                keepAlive: true
             },
             component: () => import('@/views/user/list')
+        },
+        {
+            path: 'create',
+            name: 'createUser',
+            meta: {
+                title: '创建用户',
+                hidden: true
+            },
+            component: () => import('@/views/user/create')
         },
         {
             path: 'edit/:id',

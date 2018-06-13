@@ -1,130 +1,96 @@
 <template>
-    <list-layout>
-        <Form slot="search" action="javascript:;" ref="searchForm" inline>
-            <FormItem>
-                <Input placeholder="Name"
-                       v-model="params.name"></Input>
+    <form-layout>
+        <Form class="form" ref="form"
+              :model="form.data"
+              :label-width="120">
+
+            <FormItem label="Username">
+                <p>{{ form.data.username }}</p>
             </FormItem>
+
+            <FormItem label="Nickname">
+                <p>{{ form.data.nickname }}</p>
+            </FormItem>
+
+            <FormItem label="Email">
+                <p>{{ form.data.email }}</p>
+            </FormItem>
+
+            <FormItem label="Mobile">
+                <p>{{ form.data.mobile }}</p>
+            </FormItem>
+
+            <FormItem v-show="form.hasError">
+                <Alert type="error">
+                    <span slot="desc">{{ form.message }}</span>
+                </Alert>
+            </FormItem>
+
             <FormItem>
-                <Button class="m-l-xs" html-type="submit" type="primary" icon="search"
-                        @click="search()">搜索
-                </Button>
+                <Button type="ghost" :disabled="form.isLoading" @click="back">返回</Button>
             </FormItem>
         </Form>
-
-        <Table slot="table" :columns="table.columns"
-               :data="table.data"></Table>
-
-        <Page slot="page" show-elevator
-              :page-size="page.size"
-              :current="page.current"
-              :total="page.total"
-              @on-change="search"></Page>
-    </list-layout>
+    </form-layout>
 </template>
 
 <script>
-import ListLayout from '@/components/list-layout'
+import FormLayout from '@/components/layout/form'
+
+const SCHEMA = {
+    id: 0,
+    username: '',
+    nickname: '',
+    status: '',
+    email: '',
+    mobile: ''
+}
 
 export default {
     components: {
-        ListLayout
+        FormLayout
     },
     created () {
-        this.search()
+        this.form.data.id = this.$route.params.id
+        this.getInfo(this.form.data.id)
     },
     data () {
         return {
-            params: {
-                name: ''
-            },
-            table: {
-                columns: [
-                    {
-                        title: '#',
-                        key: 'core_user_id'
-                    },
-                    {
-                        title: 'Name',
-                        key: 'core_user_name'
-                    },
-                    {
-                        title: 'UserName',
-                        key: 'display_name'
-                    },
-                    {
-                        title: 'Email',
-                        key: 'email'
-                    },
-                    {
-                        title: 'Action',
-                        key: 'action',
-                        align: 'center',
-                        render: (h, {row}) => {
-                            return h('div', [
-                                h('Button', {
-                                    props: {
-                                        type: 'success',
-                                        size: 'small'
-                                    },
-                                    style: {
-                                        marginRight: '5px'
-                                    },
-                                    on: {
-                                        click: () => {
-                                            this.view(row)
-                                        }
-                                    }
-                                }, 'View'),
-                                h('Button', {
-                                    props: {
-                                        type: 'primary',
-                                        size: 'small'
-                                    },
-                                    on: {
-                                        click: () => {
-                                            this.edit(row)
-                                        }
-                                    }
-                                }, 'Edit')
-                            ])
-                        }
-                    }
-                ],
-                data: []
-            },
-            page: {
-                size: 10,
-                total: 0,
-                current: 1
+            form: {
+                data: JSON.parse(JSON.stringify(SCHEMA)),
+                isLoading: false,
+                hasError: false,
+                message: ''
             }
         }
     },
     methods: {
-        search (page = 1) {
-            const data = JSON.parse(JSON.stringify(this.params))
-
-            data.page = page
-            data.limit = this.page.size
-            this.page.current = page
-
-            this.$ajax('searchUserList', data).then((res) => {
-                this.table.data = res.data.user_list
-                this.page.total = parseInt(res.data.totalCount)
+        getInfo (id) {
+            this.$ajax('getUserInfo', {id}).then((res) => {
+                Object.assign(this.form.data, res.data)
+            }).catch((error) => {
+                this.form.hasError = true
+                this.form.message = error.message
             })
         },
-        view (item) {
-            console.log(JSON.stringify(item, null, 4))
-        },
-        edit (item) {
-            console.log(JSON.stringify(item, null, 4))
+        back () {
+            this.$router.push({name: 'userList'})
         }
+    },
+    beforeRouteLeave (to, from, next) {
+        // 设置下一个路由的 meta
+        to.meta.keepAlive = true // 缓存，即不刷新
+        next()
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    .pagination {
-        padding: 24px 0;
+    .form-layout {
+        padding: 24px 32px;
+        background-color: #fff;
+    }
+
+    .form {
+        width: 460px;
     }
 </style>

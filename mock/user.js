@@ -121,8 +121,8 @@ module.exports = {
         'method': 'POST',
         'res': () => {
             return {
-                "code": "OK",
-                "data": "Failed"
+                "code": "Failed",
+                "data": "Failed to load response data."
             }
         }
     }
