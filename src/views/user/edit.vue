@@ -77,6 +77,7 @@ export default {
                     ],
                     mobile: [{required: true, message: '必填', trigger: 'blur'}]
                 },
+                hasSaved: false, // 是否已经保存，用于返回是否刷新
                 isLoading: false,
                 hasError: false,
                 message: ''
@@ -111,6 +112,7 @@ export default {
                 this.$Message.success({
                     content: '操作成功',
                     onClose: () => {
+                        this.form.hasSaved = true
                         this.form.isLoading = false
                         this.back()
                     }
@@ -127,7 +129,7 @@ export default {
     },
     beforeRouteLeave (to, from, next) {
         // 设置下一个路由的 meta
-        to.meta.keepAlive = false // 不缓存，即刷新
+        to.meta.keepAlive = !this.form.hasSaved // 如果已经保存，则返回刷新；否则返回不刷新
         next()
     }
 }

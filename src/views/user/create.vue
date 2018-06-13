@@ -68,6 +68,7 @@ export default {
                     ],
                     mobile: [{required: true, message: '必填', trigger: 'blur'}]
                 },
+                hasSaved: false, // 是否已经保存，用于返回是否刷新
                 isLoading: false,
                 hasError: false,
                 message: ''
@@ -90,10 +91,11 @@ export default {
             this.form.hasError = false
             this.form.isLoading = true
 
-            this.$ajax('updateUser', data, false).then((res) => {
+            this.$ajax('createUser', data, false).then((res) => {
                 this.$Message.success({
                     content: '操作成功',
                     onClose: () => {
+                        this.form.hasSaved = true
                         this.form.isLoading = false
                         this.back()
                     }
@@ -106,6 +108,11 @@ export default {
         },
         back () {
             this.$router.push({name: 'userList'})
+        },
+        beforeRouteLeave (to, from, next) {
+            // 设置下一个路由的 meta
+            to.meta.keepAlive = !this.form.hasSaved // 如果已经保存，则返回刷新；否则返回不刷新
+            next()
         }
     }
 }
