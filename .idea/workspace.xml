@@ -2,63 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad6e167f-5693-4672-a0bc-3c543712bd25" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.babelrc" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.editorconfig" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.eslintignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.postcssrc.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="$PROJECT_DIR$/build/build.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/check-versions.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/logo.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/utils.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/vue-loader.conf.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.base.conf.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.dev.conf.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/build/webpack.prod.conf.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/config/dev.env.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/config/index.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/config/prod.env.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mock/common.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mock/user.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/api/common.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/api/user.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/atlassian.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/assets/logo.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/_mixins.scss" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/mixins/_circle.scss" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/mixins/_custom-scrollbar.scss" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/mixins/_text-truncate.scss" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/form.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/list.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/fetch/common.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/fetch/index.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/fetch/user.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/router/dashboard.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/router/echart.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/router/user.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ajax.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/utils/authority.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/404.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/app/breadcrumb-nav.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/app/components/navigate.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/app/index.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/app/navigation.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/dashboard/hello-world.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/echart/gl.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/login.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/create.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/edit.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/list.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/views/user/view.vue" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/.gitkeep" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/static/favicon.ico" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -71,13 +16,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="672">
-                <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <first_editor relative-caret-position="544">
+                <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -171,33 +116,33 @@
       <option name="presentableId" value="Default" />
       <updated>1528875986935</updated>
       <workItem from="1528875989235" duration="1325000" />
+      <workItem from="1528878642092" duration="294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1325000" />
+    <option name="totallyTimeSpent" value="1619000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="2578" height="1408" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09202211" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09162717" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32983023" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -215,8 +160,19 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="672">
-            <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="544">
+            <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
             <folding />
           </first_editor>
           <second_editor />

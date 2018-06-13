@@ -8,10 +8,11 @@
 ## 分支说明
 
 - iview
-    - [iView](https://www.iviewui.com/)
-- [ct-adc](https://github.com/ct-adc)
+    - [iView](vue-admin-template/tree/iview)
+- [ct-adc](vue-admin-template/tree/ct-adc)
     - [Boostrap](http://www.bootcss.com/)
     - [jQuery](https://jquery.com/)
+    - [ct-adc](https://github.com/ct-adc)
 
 
 ## 项目运行
