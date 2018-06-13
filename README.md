@@ -7,9 +7,9 @@
 
 ## 分支说明
 
-- [iView](/tree/iview)
+- [iView](https://github.com/RoamIn/vue-admin-template/tree/iview)
     - [iView](https://www.iviewui.com/)
-- [ct-adc](/tree/ct-adc)
+- [ct-adc](https://github.com/RoamIn/vue-admin-template/tree/ct-adc)
     - [Boostrap](http://www.bootcss.com/)
     - [jQuery](https://jquery.com/)
     - [ct-adc](https://github.com/ct-adc)
