@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="form-layout">
         <Form class="form" ref="form"
               :model="form.data"
               :rules="form.rules"
@@ -25,9 +25,15 @@
                        v-model="form.data.mobile"></Input>
             </FormItem>
 
+            <FormItem v-show="form.hasError">
+                <Alert type="error">
+                    <span slot="desc">{{ form.message }}</span>
+                </Alert>
+            </FormItem>
+
             <FormItem>
                 <Button type="primary" :loading="form.isLoading" @click="handleSubmit">保存</Button>
-                <Button type="ghost" @click="back">返回</Button>
+                <Button type="ghost" :disabled="form.isLoading" @click="back">返回</Button>
             </FormItem>
         </Form>
     </section>
@@ -60,10 +66,15 @@ export default {
                 rules: {
                     username: [{required: true, message: '必填', trigger: 'blur'}],
                     nickname: [{required: true, message: '必填', trigger: 'blur'}],
-                    email: [{required: true, message: '必填', trigger: 'blur'}],
+                    email: [
+                        {required: true, message: '必填', trigger: 'blur'},
+                        {type: 'email', message: '格式错误', trigger: 'blur'}
+                    ],
                     mobile: [{required: true, message: '必填', trigger: 'blur'}]
                 },
-                isLoading: false
+                isLoading: false,
+                hasError: false,
+                message: ''
             }
         }
     },
@@ -85,8 +96,21 @@ export default {
         save () {
             const data = JSON.parse(JSON.stringify(this.form.data))
 
-            this.$ajax('updateUser', data).then((res) => {
-                this.$Message(res.data)
+            this.form.hasError = false
+            this.form.isLoading = true
+
+            this.$ajax('updateUser', data, false).then((res) => {
+                this.$Message.success({
+                    content: '操作成功',
+                    onClose: () => {
+                        this.form.isLoading = false
+                        this.back()
+                    }
+                })
+            }).catch((error) => {
+                this.form.isLoading = false
+                this.form.hasError = true
+                this.form.message = error.message
             })
         },
         back () {
@@ -98,5 +122,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .form-layout {
+        padding: 24px 32px;
+        background-color: #fff;
+    }
 
+    .form {
+        width: 460px;
+    }
 </style>

@@ -107,5 +107,23 @@ module.exports = {
                 }
             }
         }
+    },
+    '/index.php/core/CoreUserController/createUser': {
+        'method': 'POST',
+        'res': () => {
+            return {
+                "code": "OK",
+                "data": "Create Success"
+            }
+        }
+    },
+    '/index.php/core/CoreUserController/updateUser': {
+        'method': 'POST',
+        'res': () => {
+            return {
+                "code": "OK",
+                "data": "Failed"
+            }
+        }
     }
 }

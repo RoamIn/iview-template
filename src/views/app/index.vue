@@ -105,6 +105,7 @@ export default {
         flex: 0 0 256px;
         width: 256px;
         background-color: #323656;
+        user-select: none;
         transition: all .2s;
 
         &.collapsed {

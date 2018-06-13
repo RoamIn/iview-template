@@ -17,5 +17,6 @@ export default {}
 <style lang="scss" scoped>
     .breadcrumb {
         padding-bottom: 20px;
+        user-select: none;
     }
 </style>

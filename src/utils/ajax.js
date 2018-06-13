@@ -1,15 +1,50 @@
 import axios from 'axios'
-import { Message } from 'iview'
+import { Message, LoadingBar } from 'iview'
 
 import API from '@/api'
 import router from '@/router'
 import authority from './authority'
 
+// 基础配置
 const ajax = axios.create({
     baseURL: API.baseURL,
     timeout: 10000
 })
 
+// 全局 loading
+const loading = {
+    count: 0,
+    show () {
+        if (this.count === 0) {
+            this.start()
+        }
+
+        this.count++
+    },
+    tryHide () {
+        if (this.count <= 0) {
+            return
+        }
+
+        this.count--
+
+        if (this.count === 0) {
+            this.end()
+        }
+    },
+    start () {
+        LoadingBar.start()
+    },
+    end () {
+        LoadingBar.finish()
+    }
+}
+
+/**
+ * 混入全局参数 token
+ * @param params
+ * @returns {{} & {} & {token: *}}
+ */
 function mixinGlobalParams (params = {}) {
     const token = authority.getAuthority()
 
@@ -34,6 +69,10 @@ ajax.interceptors.request.use((config) => {
             config.params = mixinGlobalParams(config.data)
     }
 
+    if (config.needLoading) {
+        loading.show()
+    }
+
     return config
 },
 (error) => {
@@ -43,10 +82,13 @@ ajax.interceptors.request.use((config) => {
 })
 
 // Add a response interceptor
-
 ajax.interceptors.response.use((response) => {
     // Do something with response data
     const res = response.data
+
+    if (response.config.needLoading) {
+        loading.tryHide()
+    }
 
     if (res.code !== 'OK') {
         return Promise.reject(new Error(res.data))
@@ -69,7 +111,7 @@ ajax.interceptors.response.use((response) => {
             router.go({
                 name: 'login',
                 query: {
-                    redirect: window.location.hash.replace('#', '') // 非 hash 模式有问题
+                    redirect: router.history.current.path
                 }
             })
 
@@ -82,13 +124,14 @@ ajax.interceptors.response.use((response) => {
 })
 
 export default function (Vue) {
-    Vue.prototype.$ajax = function (apiName, data = {}) {
+    Vue.prototype.$ajax = function (apiName, data = {}, needLoading = true) {
         const {url, method} = API[apiName]
 
         return ajax({
             url,
             method,
-            data
+            data,
+            needLoading
         })
     }
 }
