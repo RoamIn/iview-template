@@ -26,7 +26,7 @@ module.exports = {
                             "id": "3",
                             "username": "xlshi",
                             "nickname": "石晓磊",
-                            "status": "NORMAL",
+                            "status": "FROZEN",
                             "email": "xlshi@email.com",
                             "mobile": '18868889888'
                         },
@@ -50,7 +50,7 @@ module.exports = {
                             "id": "6",
                             "username": "lhuang1",
                             "nickname": "黄琳",
-                            "status": "NORMAL",
+                            "status": "FROZEN",
                             "email": "lhuang1@email.com",
                             "mobile": '18868889888'
                         },

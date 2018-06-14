@@ -70,6 +70,25 @@ export default {
 
                 this.form.isLoading = false
                 this.$router.replace(this.$route.query.redirect || '/')
+
+                setTimeout(() => {
+                    // Navigation Guards
+                    this.$router.beforeEach((to, from, next) => {
+                        if (authority.hasLoggedIn() && to.name === 'login') {
+                            next({path: '/'})
+                        } else if (!authority.hasLoggedIn() && to.name !== 'login') {
+                            // sessionStorage.setItem('redirect', to.path);
+                            next({
+                                name: 'login',
+                                query: {
+                                    redirect: to.fullPath
+                                }
+                            })
+                        } else {
+                            next()
+                        }
+                    })
+                }, 1000)
             }).catch((error) => {
                 this.form.isLoading = false
                 this.$Message.error(error.message)

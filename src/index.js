@@ -7,6 +7,11 @@ import 'iview/dist/styles/iview.css'
 import router from './router'
 import ajax from '@/utils/ajax'
 
+// 注册全局组件
+import Status from '@/components/status'
+
+Vue.component('Status', Status)
+
 Vue.use(iView)
 Vue.use(ajax)
 

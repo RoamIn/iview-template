@@ -9,14 +9,18 @@ import Router from 'vue-router'
 import authority from '../utils/authority'
 
 // views
+import login from './login'
+import notFound from './not-found'
 import dashboard from './dashboard'
-import user from './user'
 import echart from './echart'
+import user from './user'
+import department from './department'
 
 Vue.use(Router)
 
 const router = new Router({
     routes: [
+        login,
         {
             path: '/',
             meta: {
@@ -34,27 +38,11 @@ const router = new Router({
                 },
                 dashboard,
                 echart,
-                user
+                user,
+                department
             ]
         },
-        {
-            path: '/login',
-            name: 'login',
-            meta: {
-                title: '登录',
-                hidden: true
-            },
-            component: () => import('@/views/login')
-        },
-        {
-            path: '*',
-            name: '404',
-            meta: {
-                title: '404',
-                hidden: true
-            },
-            component: () => import('@/views/404')
-        }
+        notFound
     ]
 })
 
