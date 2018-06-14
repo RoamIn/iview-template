@@ -18,6 +18,9 @@
 ## 项目运行
 
 ``` bash
+# clone
+git clone <remote-addr:repo.git> -b <branch-or-tag-or-commit>
+
 # install dependencies
 npm install
 
