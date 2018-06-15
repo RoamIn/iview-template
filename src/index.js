@@ -4,7 +4,12 @@ import Vue from 'vue'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 
+// Router
 import router from './router'
+// Vuex
+import store from './store'
+
+// Plugins
 import ajax from '@/utils/ajax'
 
 // 注册全局组件
@@ -21,5 +26,6 @@ Vue.config.productionTip = false
 new Vue({
     el: '#app',
     router,
+    store,
     template: '<router-view></router-view>'
 })

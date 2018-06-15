@@ -5,24 +5,27 @@
               :rules="form.rules"
               :label-width="120">
 
-            <FormItem label="Username" prop="username">
-                <Input class="form-ele" placeholder="20个字以内" :maxlength="20"
-                       v-model="form.data.username"></Input>
+            <FormItem label="关键字" prop="contentKey">
+                <Input class="form-ele" placeholder="" v-model.trim="form.data.contentKey"></Input>
             </FormItem>
 
-            <FormItem label="Nickname" prop="nickname">
-                <Input class="form-ele" placeholder="20个字以内" :maxlength="20"
-                       v-model="form.data.nickname"></Input>
+            <FormItem label="数据类型" prop="contentType">
+                <Select class="form-ele" v-model.trim="form.data.contentType">
+                    <Option value="json">JSON</Option>
+                    <Option value="string">String</Option>
+                </Select>
             </FormItem>
 
-            <FormItem label="Email" prop="email">
-                <Input class="form-ele" placeholder="example@email.com" :maxlength="50"
-                       v-model="form.data.email"></Input>
+            <FormItem label="内容" prop="content">
+                <Input class="form-textarea" type="textarea" placeholder="Enter something..."
+                       :autosize="{minRows: 5,maxRows: 15}"
+                       v-model.trim="form.data.content"></Input>
             </FormItem>
 
-            <FormItem label="Mobile" prop="mobile">
-                <Input class="form-ele" :maxlength="11"
-                       v-model="form.data.mobile"></Input>
+            <FormItem label="描述" prop="desc">
+                <Input class="form-textarea" type="textarea" placeholder="简单描述一下..."
+                       :autosize="{minRows: 2,maxRows: 5}"
+                       v-model.trim="form.data.desc"></Input>
             </FormItem>
 
             <FormItem v-show="form.hasError">
@@ -43,12 +46,11 @@
 import FormLayout from '@/components/layout/form'
 
 const SCHEMA = {
-    id: 0,
-    username: '',
-    nickname: '',
-    status: '',
-    email: '',
-    mobile: ''
+    contentKey: '',
+    contentType: '',
+    content: '',
+    status: 'NORMAL',
+    desc: ''
 }
 
 export default {
@@ -60,13 +62,26 @@ export default {
             form: {
                 data: JSON.parse(JSON.stringify(SCHEMA)),
                 rules: {
-                    username: [{required: true, message: '必填', trigger: 'blur'}],
-                    nickname: [{required: true, message: '必填', trigger: 'blur'}],
-                    email: [
-                        {required: true, message: '必填', trigger: 'blur'},
-                        {type: 'email', message: '格式错误', trigger: 'blur'}
+                    contentKey: [{ required: true, message: '必填', trigger: 'change' }],
+                    contentType: [{ required: true, message: '必填', trigger: 'change' }],
+                    content: [
+                        { required: true, message: '必填', trigger: 'change' },
+                        {
+                            validator: (rule, value, callback) => {
+                                if (this.form.data.contentType === 'json') {
+                                    try {
+                                        JSON.parse(value)
+                                    } catch (error) {
+                                        callback(new Error('格式错误'))
+                                    }
+                                }
+
+                                callback()
+                            },
+                            trigger: 'change'
+                        }
                     ],
-                    mobile: [{required: true, message: '必填', trigger: 'blur'}]
+                    desc: [{ required: true, message: '必填', trigger: 'change' }]
                 },
                 hasSaved: false, // 是否已经保存，用于返回是否刷新
                 isLoading: false,
@@ -92,7 +107,7 @@ export default {
 
             this.form.isLoading = true
 
-            this.$ajax('createUser', data, false).then((res) => {
+            this.$ajax('createConfig', data, false).then((res) => {
                 this.$Message.success({
                     content: '操作成功',
                     onClose: () => {
@@ -108,7 +123,7 @@ export default {
             })
         },
         back () {
-            this.$router.push({name: 'userList'})
+            this.$router.push({name: 'configList'})
         },
         beforeRouteLeave (to, from, next) {
             // 设置下一个路由的 meta

@@ -75,6 +75,10 @@ ajax.interceptors.request.use((config) => {
 
     return config
 }, (error) => {
+    if (error.request.config.needLoading) {
+        loading.tryHide()
+    }
+
     Message.error(error.message)
     // Do something with request error
     return Promise.reject(error)
@@ -95,6 +99,10 @@ ajax.interceptors.response.use((response) => {
 
     return res
 }, (error) => {
+    if (error.response.config.needLoading) {
+        loading.tryHide()
+    }
+
     // Do something with response error
     if (typeof error.response === 'undefined') {
         Message.error(error.message)

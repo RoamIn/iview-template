@@ -1,5 +1,5 @@
 module.exports = {
-    '/index.php/public/lebbay/login': {
+    '/index.php/common/login': {
         'method': 'POST',
         'res': () => {
             return {

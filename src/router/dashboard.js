@@ -16,7 +16,8 @@ export default {
             path: 'hello',
             name: 'hello',
             meta: {
-                title: '欢迎'
+                title: '欢迎',
+                icon: 'star'
             },
             component: () => import('@/views/dashboard/hello-world')
         }

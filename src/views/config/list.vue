@@ -52,20 +52,25 @@ export default {
                         key: 'id'
                     },
                     {
-                        title: 'Username',
-                        key: 'username'
+                        title: 'Key',
+                        key: 'contentKey'
                     },
                     {
-                        title: 'Nickname',
-                        key: 'nickname'
+                        title: 'ContentType',
+                        key: 'contentType'
                     },
                     {
-                        title: 'Email',
-                        key: 'email'
+                        title: 'Desc',
+                        key: 'desc'
                     },
                     {
-                        title: 'Mobile',
-                        key: 'mobile'
+                        title: 'Content',
+                        key: 'content',
+                        render: (h, {row}) => {
+                            return h('div', {
+                                class: 'ellipsis'
+                            }, JSON.stringify(row.content))
+                        }
                     },
                     {
                         title: 'Status',
@@ -80,25 +85,12 @@ export default {
                         }
                     },
                     {
+                        width: 100,
                         title: 'Action',
                         key: 'action',
                         align: 'center',
                         render: (h, {row}) => {
                             return h('div', [
-                                h('Button', {
-                                    props: {
-                                        type: 'success',
-                                        size: 'small'
-                                    },
-                                    style: {
-                                        marginRight: '5px'
-                                    },
-                                    on: {
-                                        click: () => {
-                                            this.view(row)
-                                        }
-                                    }
-                                }, 'View'),
                                 h('Button', {
                                     props: {
                                         type: 'primary',
@@ -131,14 +123,14 @@ export default {
             data.limit = this.page.size
             this.page.current = page
 
-            this.$ajax('searchUserList', data).then((res) => {
+            this.$ajax('searchConfig', data).then((res) => {
                 this.table.data = res.data.list
                 this.page.total = parseInt(res.data.totalCount)
             })
         },
         view ({id}) {
             this.$router.push({
-                name: 'viewUser',
+                name: 'viewConfig',
                 params: {
                     id: id
                 }
@@ -146,12 +138,12 @@ export default {
         },
         create () {
             this.$router.push({
-                name: 'createUser'
+                name: 'createConfig'
             })
         },
         edit ({id}) {
             this.$router.push({
-                name: 'editUser',
+                name: 'editConfig',
                 params: {
                     id: id
                 }
@@ -162,7 +154,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .pagination {
-        padding: 24px 0;
+    /deep/ .ellipsis {
+        overflow: hidden;
+        max-width: 500px;
+        word-break: keep-all;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 </style>

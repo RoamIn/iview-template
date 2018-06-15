@@ -1,18 +1,18 @@
 export default {
     searchUserList: {
         method: 'POST',
-        url: '/core/CoreUserController/searchUserList'
+        url: '/userController/query'
     },
     getUserInfo: {
         method: 'GET',
-        url: '/core/CoreUserController/getUserInfo'
+        url: '/userController/getInfo'
     },
     createUser: {
         method: 'POST',
-        url: '/core/CoreUserController/createUser'
+        url: '/userController/create'
     },
     updateUser: {
         method: 'POST',
-        url: '/core/CoreUserController/updateUser'
+        url: '/userController/update'
     }
 }

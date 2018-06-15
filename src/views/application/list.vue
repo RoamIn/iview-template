@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 import ListLayout from '@/components/layout/list'
 
 export default {
@@ -52,23 +54,19 @@ export default {
                         key: 'id'
                     },
                     {
-                        title: 'Username',
-                        key: 'username'
+                        title: '申请部门',
+                        key: 'departmentId'
                     },
                     {
-                        title: 'Nickname',
-                        key: 'nickname'
+                        title: '申请人',
+                        key: 'userId'
                     },
                     {
-                        title: 'Email',
-                        key: 'email'
+                        title: '申请事项',
+                        key: 'reasonId'
                     },
                     {
-                        title: 'Mobile',
-                        key: 'mobile'
-                    },
-                    {
-                        title: 'Status',
+                        title: '状态',
                         key: 'status',
                         align: 'center',
                         render: (h, {row}) => {
@@ -98,18 +96,7 @@ export default {
                                             this.view(row)
                                         }
                                     }
-                                }, 'View'),
-                                h('Button', {
-                                    props: {
-                                        type: 'primary',
-                                        size: 'small'
-                                    },
-                                    on: {
-                                        click: () => {
-                                            this.edit(row)
-                                        }
-                                    }
-                                }, 'Edit')
+                                }, 'View')
                             ])
                         }
                     }
@@ -123,7 +110,17 @@ export default {
             }
         }
     },
+    computed: {
+        ...mapGetters([
+            'userList',
+            'departmentTree'
+        ])
+    },
     methods: {
+        ...mapActions([
+            'getUserList',
+            'getDepartmentTree'
+        ]),
         search (page = 1) {
             const data = JSON.parse(JSON.stringify(this.params))
 
@@ -131,14 +128,14 @@ export default {
             data.limit = this.page.size
             this.page.current = page
 
-            this.$ajax('searchUserList', data).then((res) => {
+            this.$ajax('searchApplicationList', data).then((res) => {
                 this.table.data = res.data.list
                 this.page.total = parseInt(res.data.totalCount)
             })
         },
         view ({id}) {
             this.$router.push({
-                name: 'viewUser',
+                name: 'viewApplication',
                 params: {
                     id: id
                 }
@@ -146,12 +143,12 @@ export default {
         },
         create () {
             this.$router.push({
-                name: 'createUser'
+                name: 'createApplication'
             })
         },
         edit ({id}) {
             this.$router.push({
-                name: 'editUser',
+                name: 'editApplication',
                 params: {
                     id: id
                 }

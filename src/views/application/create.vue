@@ -55,10 +55,6 @@ export default {
     components: {
         FormLayout
     },
-    created () {
-        this.form.data.id = this.$route.params.id
-        this.getInfo(this.form.data.id)
-    },
     data () {
         return {
             form: {
@@ -80,17 +76,7 @@ export default {
         }
     },
     methods: {
-        getInfo (id) {
-            this.$ajax('getUserInfo', {id}).then((res) => {
-                Object.assign(this.form.data, res.data)
-            }).catch((error) => {
-                this.form.hasError = true
-                this.form.message = error.message
-            })
-        },
         handleSubmit () {
-            this.form.hasError = false
-
             this.$refs.form.validate((valid) => {
                 if (!valid) {
                     return
@@ -102,9 +88,10 @@ export default {
         save () {
             const data = JSON.parse(JSON.stringify(this.form.data))
 
+            this.form.hasError = false
             this.form.isLoading = true
 
-            this.$ajax('updateUser', data, false).then((res) => {
+            this.$ajax('createUser', data, false).then((res) => {
                 this.$Message.success({
                     content: '操作成功',
                     onClose: () => {
@@ -120,13 +107,13 @@ export default {
             })
         },
         back () {
-            this.$router.push({name: 'userList'})
+            this.$router.push({name: 'applicationList'})
+        },
+        beforeRouteLeave (to, from, next) {
+            // 设置下一个路由的 meta
+            to.meta.keepAlive = !this.form.hasSaved // 如果已经保存，则返回刷新；否则返回不刷新
+            next()
         }
-    },
-    beforeRouteLeave (to, from, next) {
-        // 设置下一个路由的 meta
-        to.meta.keepAlive = !this.form.hasSaved // 如果已经保存，则返回刷新；否则返回不刷新
-        next()
     }
 }
 </script>

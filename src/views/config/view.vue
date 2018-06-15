@@ -73,7 +73,7 @@ export default {
             })
         },
         back () {
-            this.$router.push({name: 'userList'})
+            this.$router.push({name: 'configList'})
         }
     },
     beforeRouteLeave (to, from, next) {

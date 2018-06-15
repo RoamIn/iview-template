@@ -12,9 +12,9 @@ import authority from '../utils/authority'
 import login from './login'
 import notFound from './not-found'
 import dashboard from './dashboard'
-import echart from './echart'
 import user from './user'
-import department from './department'
+import config from './config'
+import application from './application'
 
 Vue.use(Router)
 
@@ -37,9 +37,9 @@ const router = new Router({
                     }
                 },
                 dashboard,
-                echart,
                 user,
-                department
+                config,
+                application
             ]
         },
         notFound
