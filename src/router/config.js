@@ -1,6 +1,6 @@
 export default {
     path: '/config',
-    component: {template: '<router-view></router-view>'},
+    component: () => import('@/views/config'),
     meta: {
         title: '配置管理'
     },

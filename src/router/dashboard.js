@@ -1,6 +1,6 @@
 export default {
     path: '/dashboard',
-    component: {template: '<router-view></router-view>'},
+    component: () => import('@/views/dashboard'),
     meta: {
         title: '面板'
     },

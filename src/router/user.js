@@ -1,6 +1,6 @@
 export default {
     path: '/user',
-    component: {template: '<router-view></router-view>'},
+    component: () => import('@/views/user'),
     meta: {
         title: '用户管理'
     },

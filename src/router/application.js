@@ -1,6 +1,6 @@
 export default {
     path: '/application',
-    component: {template: '<router-view></router-view>'},
+    component: () => import('@/views/application'),
     meta: {
         title: '申请管理'
     },
