@@ -6,7 +6,7 @@ import router from '@/router'
 import authority from './authority'
 
 // 基础配置
-const ajax = axios.create({
+const _ajax = axios.create({
     baseURL: API.baseURL,
     timeout: 10000
 })
@@ -54,7 +54,7 @@ function mixinGlobalParams (params = {}) {
 }
 
 // Add a request interceptor
-ajax.interceptors.request.use((config) => {
+_ajax.interceptors.request.use((config) => {
     // 混入公共参数
     switch (config.method) {
         case 'put':
@@ -85,7 +85,7 @@ ajax.interceptors.request.use((config) => {
 })
 
 // Add a response interceptor
-ajax.interceptors.response.use((response) => {
+_ajax.interceptors.response.use((response) => {
     // Do something with response data
     const res = response.data
 
@@ -129,11 +129,22 @@ ajax.interceptors.response.use((response) => {
     return Promise.reject(error)
 })
 
+export function ajax (apiName, data = {}, needLoading = true) {
+    const {url, method} = API[apiName]
+
+    return _ajax({
+        url,
+        method,
+        data,
+        needLoading
+    })
+}
+
 export default function (Vue) {
     Vue.prototype.$ajax = function (apiName, data = {}, needLoading = true) {
         const {url, method} = API[apiName]
 
-        return ajax({
+        return _ajax({
             url,
             method,
             data,

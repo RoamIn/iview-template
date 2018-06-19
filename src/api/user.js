@@ -14,5 +14,9 @@ export default {
     updateUser: {
         method: 'POST',
         url: '/userController/update'
+    },
+    getUserList: {
+        method: 'GET',
+        url: '/userController/getAll'
     }
 }

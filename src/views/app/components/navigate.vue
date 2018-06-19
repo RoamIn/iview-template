@@ -45,13 +45,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import "~scss/_mixins";
+    @import "~scss/mixins";
 
     li {
         list-style: none;
 
         i {
-            font-size: 16px;
+            padding-right: 5px;
+            font-size: 20px;
         }
     }
 

@@ -10,7 +10,7 @@ module.exports = {
                             'id': 1,
                             'departmentId': 74,
                             'userId': 2,
-                            'reasonId': 1,
+                            'reasonId': 45,
                             'status': 'APPROVED'
                         }
                     ],
