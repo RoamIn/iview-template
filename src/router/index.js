@@ -31,7 +31,7 @@ const router = new Router({
             children: [
                 {
                     path: '',
-                    redirect: {name: 'hello'},
+                    redirect: {name: 'test'},
                     meta: {
                         hidden: true
                     }

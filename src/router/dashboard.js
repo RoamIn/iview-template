@@ -20,6 +20,15 @@ export default {
                 icon: 'star'
             },
             component: () => import('@/views/dashboard/hello-world')
+        },
+        {
+            path: 'test',
+            name: 'test',
+            meta: {
+                title: '测试',
+                icon: 'stats'
+            },
+            component: () => import('@/views/dashboard/component-test')
         }
     ]
 }
