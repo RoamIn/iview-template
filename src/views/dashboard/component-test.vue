@@ -1,9 +1,9 @@
 <template>
     <Row>
-        <Col span="6" offset="9">
+        <Col span="12" offset="6">
             {{ data }}
         </Col>
-        <Col span="6" offset="9">
+        <Col span="12" offset="6">
             <BetterAutoComplete :data="list"
                                 :show-keys="showKeys"
                                 v-model="data"></BetterAutoComplete>
@@ -32,7 +32,7 @@ export default {
             showKeys: ['id', 'name'],
             matchKeys: ['id', 'name'],
             keys: ['id', 'name'],
-            data: ''
+            data: 6
         }
     }
 }

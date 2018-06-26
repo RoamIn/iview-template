@@ -1,19 +1,19 @@
 <template>
-    <div>
+    <div class="auto-complete">
         <Input :icon="icon"
                @on-focus="focusHandle"
                @on-blur="blurHandle"
                v-model.trim="key"></Input>
-        <transition name="transition-drop">
+        <transition name="fade">
             <div class="ivu-select-dropdown"
                  v-show="dropVisible">
                 <ul class="ivu-dropdown-menu">
-                    <li class="ivu-dropdown-item" v-for="(item, i) in filteredList"
+                    <li class="ivu-dropdown-item" v-for="(item, i) in matchedList"
                         :key="i" @click="select(item)">
                         <template v-for="key in showKeys">{{ item[key] }}</template>
                     </li>
 
-                    <li class="ivu-dropdown-item empty" v-show="filteredList.length === 0">暂无数据</li>
+                    <li class="ivu-dropdown-item empty" v-show="matchedList.length === 0">暂无数据</li>
                 </ul>
             </div>
         </transition>
@@ -75,7 +75,7 @@ export default {
         }
     },
     computed: {
-        filteredList () {
+        matchedList () {
             return this.data.filter((item) => {
                 return item[this.showKeys[1]].indexOf(this.key) !== -1
             })
@@ -84,15 +84,13 @@ export default {
     methods: {
         select (item) {
             console.log(item.name)
-            this.setCurrentValue(item.name)
+            this.setCurrentValue(item)
+            this.key = item.name
         },
-        setCurrentValue (val) {
-            if (this.currentValue === val) {
-                return
-            }
-
-            this.currentValue = val
+        setCurrentValue (item) {
+            this.currentValue = item.id
             this.dropVisible = false
+            console.log(item)
             this.$emit('input', this.currentValue)
         },
         focusHandle () {
@@ -104,7 +102,9 @@ export default {
     },
     watch: {
         value (val) {
-            this.setCurrentValue(val)
+            if (this.currentValue !== val) {
+                this.setCurrentValue(val)
+            }
         }
     }
 }
@@ -118,60 +118,5 @@ export default {
     .ivu-dropdown-item.empty {
         cursor: default;
         color: #c3cbd6
-    }
-
-    .transition-drop-appear,.transition-drop-enter-active {
-        animation-duration: .3s;
-        animation-fill-mode: both;
-        animation-play-state: paused
-    }
-
-    .transition-drop-leave-active {
-        animation-duration: .3s;
-        animation-fill-mode: both;
-        animation-play-state: paused
-    }
-
-    .transition-drop-appear,.transition-drop-enter-active {
-        animation-name: ivuTransitionDropIn;
-        animation-play-state: running
-    }
-
-    .transition-drop-leave-active {
-        animation-name: ivuTransitionDropOut;
-        animation-play-state: running
-    }
-
-    .transition-drop-appear,.transition-drop-enter-active {
-        opacity: 0;
-        animation-timing-function: ease-in-out
-    }
-
-    .transition-drop-leave-active {
-        animation-timing-function: ease-in-out
-    }
-
-    @keyframes ivuTransitionDropIn {
-        0% {
-            opacity: 0;
-            transform: scaleY(.8)
-        }
-
-        100% {
-            opacity: 1;
-            transform: scaleY(1)
-        }
-    }
-
-    @keyframes ivuTransitionDropOut {
-        0% {
-            opacity: 1;
-            transform: scaleY(1)
-        }
-
-        100% {
-            opacity: 0;
-            transform: scaleY(.8)
-        }
     }
 </style>
